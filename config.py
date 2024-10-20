@@ -43,7 +43,7 @@ except ValueError:
 
 
 
-CUSTOM_CAPTION = os.environ.get('CUSTOM_CAPTION', '<b><a href="https://t.me/ani_weebs">:ᴀɴɪᴍᴇ ᴡᴇᴇʙs:</a> ᴡʜᴇʀᴇ ᴘᴀssɪᴏɴ ᴍᴇᴇᴛs ᴘɪxᴇʟs!</b>')
+CUSTOM_CAPTION = os.environ.get('CUSTOM_CAPTION', '<b><a href="https://t.me/ani_weebs">ᴀɴɪᴍᴇ ᴡᴇᴇʙs:</a> ᴡʜᴇʀᴇ ᴘᴀssɪᴏɴ ᴍᴇᴇᴛs ᴘɪxᴇʟs!</b>')
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
 
 DISABLE_CHANNEL_BUTTON = True if os.environ.get('DISABLE_CHANNEL_BUTTON', "True") == "True" else False
