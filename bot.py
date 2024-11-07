@@ -1,15 +1,16 @@
-import os, asyncio, humanize
 from aiohttp import web
 from plugins import web_server
 import pyromod.listen
-from pyrogram import Client, filters
+from pyrogram import Client
 from pyrogram.enums import ParseMode
+import sys
+from datetime import datetime
 from config import API_HASH, API_ID, LOGGER, BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL2, CHANNEL_ID, PORT
 import pyrogram.utils
-from datetime import datetime  # Added import for datetime
 
-# Set MIN_CHANNEL_ID for compatibility
 pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
+
+
 
 class Bot(Client):
     def __init__(self):
@@ -26,66 +27,67 @@ class Bot(Client):
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
-        self.uptime = datetime.now()  # Now datetime is defined
+        self.uptime = datetime.now()
 
-        # Commented out non-essential code
-        # Handle FORCE_SUB_CHANNEL logic
-        # if FORCE_SUB_CHANNEL:
-        #     try:
-        #         link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-        #         if not link:
-        #             await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
-        #             link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-        #         self.invitelink = link
-        #     except Exception as a:
-        #         self.LOGGER(__name__).warning(a)
-        #         self.LOGGER(__name__).info("Bot stopped due to FORCE_SUB_CHANNEL setup issue.")
-        #         sys.exit()
+        if FORCE_SUB_CHANNEL:
+            try:
+                link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
+                if not link:
+                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
+                    link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
+                self.invitelink = link
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning("Bot Can't Export Invite Link From Force Sub Channel !")
+                self.LOGGER(__name__).warning(f"Please Double Check The FORCE_SUB_CHANNEL Value And Make Sure Bot Is Admin In Channel With Invite Users Via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
+                self.LOGGER(__name__).info("\nBot Stopped. https://t.me/MadflixBots_Support For Support")
+                sys.exit()
+        if FORCE_SUB_CHANNEL2:
+            try:
+                link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+                if not link:
+                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
+                    link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+                self.invitelink2 = link
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning("Bot Can't Export Invite Link From Force Sub Channel !")
+                self.LOGGER(__name__).warning(f"Please Double Check The FORCE_SUB_CHANNEL2 Value And Make Sure Bot Is Admin In Channel With Invite Users Via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL2}")
+                self.LOGGER(__name__).info("\nBot Stopped. https://t.me/MadflixBots_Support For Support")
+                sys.exit()
 
-        # Handle FORCE_SUB_CHANNEL2 logic
-        # if FORCE_SUB_CHANNEL2:
-        #     try:
-        #         link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
-        #         if not link:
-        #             await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
-        #             link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
-        #         self.invitelink2 = link
-        #     except Exception as a:
-        #         self.LOGGER(__name__).warning(a)
-        #         self.LOGGER(__name__).info("Bot stopped due to FORCE_SUB_CHANNEL2 setup issue.")
-        #         sys.exit()
+        try:
+            db_channel = await self.get_chat(CHANNEL_ID)
+            self.db_channel = db_channel
+            test = await self.send_message(chat_id = db_channel.id, text = "Hey 🖐")
+            await test.delete()
+        except Exception as e:
+            self.LOGGER(__name__).warning(e)
+            self.LOGGER(__name__).warning(f"Make Sure Bot Is Admin In DB Channel, And Double Check The CHANNEL_ID Value, Current Value: {CHANNEL_ID}")
+            self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/MadflixBots_Support For Support")
+            sys.exit()
 
-        # Set up the DB channel
-        # try:
-        #     db_channel = await self.get_chat(CHANNEL_ID)
-        #     self.db_channel = db_channel
-        #     test = await self.send_message(chat_id=db_channel.id, text="Hey 🖐")
-        #     await test.delete()
-        # except Exception as e:
-        #     self.LOGGER(__name__).warning(e)
-        #     self.LOGGER(__name__).info("Bot stopped due to CHANNEL_ID setup issue.")
-        #     sys.exit()
-
-        # Web server setup (commented out as it's non-essential)
-        # app = web.AppRunner(await web_server())
-        # await app.setup()
-        # bind_address = "0.0.0.0"
-        # await web.TCPSite(app, bind_address, PORT).start()
-
-        self.LOGGER(__name__).info("Bot running..!")
+        self.set_parse_mode(ParseMode.HTML)
+        self.LOGGER(__name__).info(f"Bot Running..!\n\nCreated By \nhttps://t.me/Madflix_Bots")
+        self.LOGGER(__name__).info(f"""ミ💖 MADFLIX BOTZ 💖彡""")
         self.username = usr_bot_me.username
+        #web-response
+        app = web.AppRunner(await web_server())
+        await app.setup()
+        bind_address = "0.0.0.0"
+        await web.TCPSite(app, bind_address, PORT).start()
 
     async def stop(self, *args):
         await super().stop()
         self.LOGGER(__name__).info("Bot Stopped...")
+            
 
-# Only keeping the video ID functionality
-@Bot.on_message(filters.video & filters.private)
-async def get_video_id(client, message):
-    video_id = message.video.file_id
-    await message.reply(f"Video ID: `{video_id}`", quote=True)
 
-# Initialize the bot
-if __name__ == "__main__":
-    bot = Bot()
-    bot.run()
+
+
+
+# Jishu Developer 
+# Don't Remove Credit 🥺
+# Telegram Channel @Madflix_Bots
+# Backup Channel @JishuBotz
+# Developer @JishuDeveloper
