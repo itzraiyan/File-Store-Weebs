@@ -6,6 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from config import API_HASH, API_ID, LOGGER, BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL2, CHANNEL_ID, PORT
 import pyrogram.utils
+from datetime import datetime  # Added import for datetime
 
 # Set MIN_CHANNEL_ID for compatibility
 pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
@@ -25,7 +26,7 @@ class Bot(Client):
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
-        self.uptime = datetime.now()
+        self.uptime = datetime.now()  # Now datetime is defined
 
         # Handle FORCE_SUB_CHANNEL logic
         if FORCE_SUB_CHANNEL:
