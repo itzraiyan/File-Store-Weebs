@@ -5,13 +5,13 @@ from logging.handlers import RotatingFileHandler
 
 
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7529865522:AAH56BZLWvO6BWcoa5Ho3I3CRTIwRazRcX4")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7786549051:AAEqSb5ketYvO4__lcjgjuMglgL_MMOF3rU")
 API_ID = int(os.environ.get("API_ID", "26684254"))
 API_HASH = os.environ.get("API_HASH", "fc836096a68be3a4fcd7594cb3d9326f")
 
 
 OWNER_ID = int(os.environ.get("OWNER_ID", "6161189904"))
-DB_URL = os.environ.get("DB_URL", "mongodb+srv://makise:makise@cluster0.wopsj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DB_URL = os.environ.get("DB_URL", "mongodb+srv://ulquiorra:ulquiorra@cluster0.72cbp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
 
@@ -20,7 +20,7 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002176961000"))
 FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002230781817"))
 
 
-FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "1800")) # auto delete in seconds
+FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "172800")) # auto delete in seconds
 
 
 PORT = os.environ.get("PORT", "8080")
