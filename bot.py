@@ -28,48 +28,49 @@ class Bot(Client):
         usr_bot_me = await self.get_me()
         self.uptime = datetime.now()  # Now datetime is defined
 
+        # Commented out non-essential code
         # Handle FORCE_SUB_CHANNEL logic
-        if FORCE_SUB_CHANNEL:
-            try:
-                link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-                if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
-                    link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-                self.invitelink = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).info("Bot stopped due to FORCE_SUB_CHANNEL setup issue.")
-                sys.exit()
+        # if FORCE_SUB_CHANNEL:
+        #     try:
+        #         link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
+        #         if not link:
+        #             await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
+        #             link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
+        #         self.invitelink = link
+        #     except Exception as a:
+        #         self.LOGGER(__name__).warning(a)
+        #         self.LOGGER(__name__).info("Bot stopped due to FORCE_SUB_CHANNEL setup issue.")
+        #         sys.exit()
 
         # Handle FORCE_SUB_CHANNEL2 logic
-        if FORCE_SUB_CHANNEL2:
-            try:
-                link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
-                if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
-                    link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
-                self.invitelink2 = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).info("Bot stopped due to FORCE_SUB_CHANNEL2 setup issue.")
-                sys.exit()
+        # if FORCE_SUB_CHANNEL2:
+        #     try:
+        #         link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+        #         if not link:
+        #             await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
+        #             link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+        #         self.invitelink2 = link
+        #     except Exception as a:
+        #         self.LOGGER(__name__).warning(a)
+        #         self.LOGGER(__name__).info("Bot stopped due to FORCE_SUB_CHANNEL2 setup issue.")
+        #         sys.exit()
 
         # Set up the DB channel
-        try:
-            db_channel = await self.get_chat(CHANNEL_ID)
-            self.db_channel = db_channel
-            test = await self.send_message(chat_id=db_channel.id, text="Hey 🖐")
-            await test.delete()
-        except Exception as e:
-            self.LOGGER(__name__).warning(e)
-            self.LOGGER(__name__).info("Bot stopped due to CHANNEL_ID setup issue.")
-            sys.exit()
+        # try:
+        #     db_channel = await self.get_chat(CHANNEL_ID)
+        #     self.db_channel = db_channel
+        #     test = await self.send_message(chat_id=db_channel.id, text="Hey 🖐")
+        #     await test.delete()
+        # except Exception as e:
+        #     self.LOGGER(__name__).warning(e)
+        #     self.LOGGER(__name__).info("Bot stopped due to CHANNEL_ID setup issue.")
+        #     sys.exit()
 
-        # Web server setup
-        app = web.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, PORT).start()
+        # Web server setup (commented out as it's non-essential)
+        # app = web.AppRunner(await web_server())
+        # await app.setup()
+        # bind_address = "0.0.0.0"
+        # await web.TCPSite(app, bind_address, PORT).start()
 
         self.LOGGER(__name__).info("Bot running..!")
         self.username = usr_bot_me.username
@@ -77,11 +78,6 @@ class Bot(Client):
     async def stop(self, *args):
         await super().stop()
         self.LOGGER(__name__).info("Bot Stopped...")
-
-# Commenting out all non-essential code and functionalities
-# @Bot.on_message(filters.command('start') & filters.private & subscribed)
-# async def start_command(client: Client, message: Message):
-#     # Start command code here (commented out for simplicity)
 
 # Only keeping the video ID functionality
 @Bot.on_message(filters.video & filters.private)
