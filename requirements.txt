@@ -1,10 +1,9 @@
-pyrogram
+pyrofork
 TgCrypto
 pyromod
 pymongo
 dnspython
 aiohttp
-
 humanize
 
 
