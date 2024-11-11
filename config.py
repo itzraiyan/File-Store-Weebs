@@ -43,7 +43,7 @@ except ValueError:
 
 
 
-CUSTOM_CAPTION = os.environ.get('CUSTOM_CAPTION', '<blockquote><b><a href="https://t.me/ani_weebs">ᴀɴɪᴍᴇ ᴡᴇᴇʙs:</a> ᴡʜᴇʀᴇ ᴘᴀssɪᴏɴ ᴍᴇᴇᴛs ᴘɪxᴇʟs!</b></blockquote>')
+CUSTOM_CAPTION = os.environ.get('CUSTOM_CAPTION', '<blockquote><b><a href="https://t.me/weebs_gc">ᴡᴇᴇʙs ɢᴄ:</a> ᴛᴏɢᴇᴛʜᴇʀ, ᴡᴇ ᴍᴀᴋᴇ ɪᴛ ʜᴀᴘᴘᴇɴ!</b></blockquote>')
 
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
 
