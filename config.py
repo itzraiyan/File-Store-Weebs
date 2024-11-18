@@ -5,21 +5,21 @@ from logging.handlers import RotatingFileHandler
 
 
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7786549051:AAEqSb5ketYvO4__lcjgjuMglgL_MMOF3rU")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7680100094:AAE936BjRKNZeYYxGis_URSz9YpnJ4L3YqE")
 API_ID = int(os.environ.get("API_ID", "26684254"))
 API_HASH = os.environ.get("API_HASH", "fc836096a68be3a4fcd7594cb3d9326f")
 
 
 OWNER_ID = int(os.environ.get("OWNER_ID", "6161189904"))
-DB_URL = os.environ.get("DB_URL", "mongodb+srv://ulquiorra:ulquiorra@cluster0.72cbp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DB_URL = os.environ.get("DB_URL", "mongodb+srv://okarun:okarun@cluster0.phbxh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
 
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002383780897"))
-FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002176961000"))
-FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002230781817"))
-FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCE_SUB_CHANNEL3", "-1002200180144"))
-FORCE_SUB_CHANNEL4 = int(os.environ.get("FORCE_SUB_CHANNEL4", "-1002349345920"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002252869832"))
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
+FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "0"))
+FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCE_SUB_CHANNEL3", "0"))
+FORCE_SUB_CHANNEL4 = int(os.environ.get("FORCE_SUB_CHANNEL4", "0"))
 
 
 FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "10800")) # auto delete in seconds
