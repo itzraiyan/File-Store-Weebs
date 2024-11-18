@@ -32,35 +32,8 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 try:
     ADMINS=[6848088376]
-    for x in (os.environ.get("ADMINS", "2061656269").split()):
+    for x in (os.environ.get("ADMINS", "6848088376").split()):
         ADMINS.append(int(x))
-except ValueError:
-        raise Exception("Your Admins list does not contain valid integers.")
-
-
-
-
-
-
-
-
-
-CUSTOM_CAPTION = os.environ.get('CUSTOM_CAPTION', '<blockquote><b><a href="https://t.me/weebs_gc">ᴡᴇᴇʙs ɢᴄ:</a> ᴛᴏɢᴇᴛʜᴇʀ, ᴡᴇ ᴍᴀᴋᴇ ɪᴛ ʜᴀᴘᴘᴇɴ!</b></blockquote>')
-
-PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
-
-DISABLE_CHANNEL_BUTTON = True if os.environ.get('DISABLE_CHANNEL_BUTTON', "True") == "True" else False
-
-BOT_STATS_TEXT = "<b>BOT UPTIME :</b>\n{uptime}"
-
-
-
-
-
-
-
-USER_REPLY_TEXT = "<b>ʙᴀᴋᴋᴀ ! ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ꜱᴇɴᴘᴀɪ!!</b>"
-
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
 
