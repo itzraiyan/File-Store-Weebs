@@ -89,7 +89,7 @@ async def start_command(client: Client, message: Message):
                 pass
 
 
-        k = await client.send_message(chat_id = message.from_user.id, text=f"<b>The file(s) will be deleted in {file_auto_delete}‼️</b>\n\n<b>Forward the file(s) to your Saved Messages and start downloading from there 🚀</b>")
+        k = await client.send_message(chat_id = message.from_user.id, text=f"<b>Tʜᴇ ғɪʟᴇ(s) ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ɪɴ 𝟻 ᴍɪɴᴜᴛᴇs‼\n\nFᴏʀᴡᴀʀᴅ ᴛʜᴇ ғɪʟᴇ(s) ᴛᴏ ʏᴏᴜʀ Sᴀᴠᴇᴅ Mᴇssᴀɢᴇs ᴀɴᴅ sᴛᴀʀᴛ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ғʀᴏᴍ ᴛʜᴇʀᴇ 🚀</b>")
 
         # Schedule the file deletion
         asyncio.create_task(delete_files(madflix_msgs, client, k))
@@ -240,7 +240,7 @@ async def delete_files(messages, client, k):
         except Exception as e:
             print(f"The attempt to delete the media {msg.id} was unsuccessful: {e}")
     # await client.send_message(messages[0].chat.id, "Your Video / File Is Successfully Deleted ✅")
-    await k.edit_text("<b>ᴀʟʟ ᴛʜᴇ ғɪʟᴇ(s) ʜᴀᴠᴇ ʙᴇᴇɴ ᴅᴇʟᴇᴛᴇᴅ ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ɪssᴜᴇs 📂<b>")
+    await k.edit_text("<b>ᴀʟʟ ᴛʜᴇ ғɪʟᴇ(s) ʜᴀᴠᴇ ʙᴇᴇɴ ᴅᴇʟᴇᴛᴇᴅ ᴛᴏ ᴀᴠᴏɪᴅ ᴄᴏᴘʏʀɪɢʜᴛ ɪssᴜᴇs 📂</b>")
     
 
 # Jishu Developer 
